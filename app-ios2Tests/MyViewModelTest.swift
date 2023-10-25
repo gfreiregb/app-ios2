@@ -8,7 +8,7 @@ final class MyViewModelTest: XCTestCase {
     func testViewModelState() async {
         print("Step 1: \(viewModel.viewState)")
         XCTAssertEqual(viewModel.viewState, .Idle)
-        let expectation = XCTestExpectation(description: "verify() was called")
+        let expectation = XCTestExpectation(description: "Loading Finished")
         Task {
             viewModel.verify()
             print("Step 2: \(viewModel.viewState)")
@@ -17,7 +17,6 @@ final class MyViewModelTest: XCTestCase {
             expectation.fulfill()
         }
         await fulfillment(of: [expectation], timeout: 5.0)
-        try! await Task.sleep(for: .seconds(1))
         XCTAssertEqual(viewModel.viewState, .Success)
         print("Step 3: \(viewModel.viewState)")
     }
