@@ -14,7 +14,7 @@ class MyViewModel {
     
     func setRandom() async {
         try! await Task.sleep(for: .seconds(2))
-        var random = Int.random(in: 0...10)
+        let random = Int.random(in: 0...10)
         viewState = {
             if random > 5 {
                 ViewState.Success
