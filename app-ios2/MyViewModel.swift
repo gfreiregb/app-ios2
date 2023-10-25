@@ -15,7 +15,6 @@ class MyViewModel {
     
     func verify() async {
         viewState = .Loading
-        print(viewState)
         try! await Task.sleep(for: .seconds(2))
         var random = Int.random(in: 0...10)
         viewState = {
@@ -25,7 +24,6 @@ class MyViewModel {
                 ViewState.Failure
             }
         }()
-        print(viewState)
     }
 }
 

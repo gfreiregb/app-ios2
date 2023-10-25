@@ -12,11 +12,14 @@ final class MyViewModelTest: XCTestCase {
     
     var viewModel = MyViewModel()
     
-    func testViewModelState() {
-        assert(1 + 1 == 3)
-//        async {
-//            await viewModel.verify()
-//            assert(viewModel.viewState == .Success)
-//        }
+    func testViewModelState() async {
+        print("Step 1: \(viewModel.viewState)")
+        XCTAssertEqual(viewModel.viewState, .Idle)
+        await viewModel.verify()
+        print("Step 2: \(viewModel.viewState)")
+        XCTAssertEqual(viewModel.viewState, .Loading)
+        try! await Task.sleep(for: .seconds(1))
+        XCTAssertEqual(viewModel.viewState, .Success)
+        print("Step 3: \(viewModel.viewState)")
     }
 }
