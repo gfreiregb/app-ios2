@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State var selected: Bool
     @State var viewModel: MyViewModel = MyViewModel()
+    @State private var showDetailView = false
     
     init(_ selected: Bool) {
         self.selected = selected
@@ -10,7 +11,41 @@ struct ContentView: View {
     
     var body: some View {
         if viewModel.viewState == .Idle {
+            NavBeforeiOS16(showDetailView: $showDetailView, selected: $selected) {
+                viewModel.verify()
+            }
+        } else if viewModel.viewState == .Loading {
+            LoadingView()
+        } else if viewModel.viewState == .Success {
+            SuccesView()
+        } else if viewModel.viewState == .Failure {
+            FailureView()
+        }
+    }
+}
+
+struct NavBeforeiOS16: View {
+    @Binding var showDetailView: Bool
+    @Binding var selected: Bool
+    let action: () -> Void
+    var body: some View {
+        NavigationView {
             VStack {
+                NavigationLink(
+                    destination: DetailView(), isActive: $showDetailView) {
+                        Button(action: {
+                          print("Button Action")
+                            Task {
+                                try! await Task.sleep(for: .seconds(2))
+                                let random = Int.random(in: 0...10)
+                                showDetailView = random > 5
+                                print(random)
+                                print(showDetailView)
+                            }
+                        }) {
+                            Text("Button")
+                        }
+                    }
                 Spacer()
                 Image(systemName: "globe")
                     .imageScale(.large)
@@ -20,9 +55,7 @@ struct ContentView: View {
                 Toggle(isOn: $selected) {
                     Text("Select Toogle")
                 }.onChange(of: selected) {
-                    Task {
-                        await viewModel.verify()
-                    }
+                    action()
                     print(selected)
                 }
 
@@ -31,12 +64,6 @@ struct ContentView: View {
                 Spacer()
             }
             .padding()
-        } else if viewModel.viewState == .Loading {
-            LoadingView()
-        } else if viewModel.viewState == .Success {
-            SuccesView()
-        } else if viewModel.viewState == .Failure {
-            FailureView()
         }
     }
 }
@@ -63,17 +90,19 @@ struct LoadingView: View {
 struct SuccesView: View {
     var body: some View {
         Text("Success!")
+            .onTapGesture {
+                print("Tapped")
+            }
     }
 }
 
 struct FailureView: View {
     var body: some View {
         Text("Failure!")
+            .onTapGesture {
+                print("Tapped")
+            }
     }
-}
-
-func add(numA: Int, numB: Int) {
-    numA + numB
 }
 
 #Preview {

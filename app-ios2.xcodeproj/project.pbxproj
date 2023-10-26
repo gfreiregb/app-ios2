@@ -15,6 +15,7 @@
 		32B02A2B2AE6FE5900EBA298 /* app_ios2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B02A2A2AE6FE5900EBA298 /* app_ios2UITests.swift */; };
 		32B02A2D2AE6FE5900EBA298 /* app_ios2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B02A2C2AE6FE5900EBA298 /* app_ios2UITestsLaunchTests.swift */; };
 		32B02A3A2AE84FFC00EBA298 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B02A392AE84FFC00EBA298 /* MyViewModel.swift */; };
+		32B02A3C2AEAC1FD00EBA298 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B02A3B2AEAC1FD00EBA298 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		32B02A2A2AE6FE5900EBA298 /* app_ios2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_ios2UITests.swift; sourceTree = "<group>"; };
 		32B02A2C2AE6FE5900EBA298 /* app_ios2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app_ios2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		32B02A392AE84FFC00EBA298 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
+		32B02A3B2AEAC1FD00EBA298 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		32B02A0E2AE6FE5700EBA298 /* app-ios2 */ = {
 			isa = PBXGroup;
 			children = (
+				32B02A3B2AEAC1FD00EBA298 /* DetailView.swift */,
 				32B02A0F2AE6FE5700EBA298 /* app_ios2App.swift */,
 				32B02A112AE6FE5700EBA298 /* ContentView.swift */,
 				32B02A392AE84FFC00EBA298 /* MyViewModel.swift */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32B02A122AE6FE5700EBA298 /* ContentView.swift in Sources */,
+				32B02A3C2AEAC1FD00EBA298 /* DetailView.swift in Sources */,
 				32B02A102AE6FE5700EBA298 /* app_ios2App.swift in Sources */,
 				32B02A3A2AE84FFC00EBA298 /* MyViewModel.swift in Sources */,
 			);

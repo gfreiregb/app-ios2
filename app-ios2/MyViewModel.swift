@@ -16,7 +16,7 @@ class MyViewModel {
         try! await Task.sleep(for: .seconds(2))
         let random = Int.random(in: 0...10)
         viewState = {
-            if random > 5 {
+            if random > 3 {
                 ViewState.Success
             } else {
                 ViewState.Failure
